@@ -1,6 +1,7 @@
-# Java EE practice project
-Project is based on *Maven*, thus import project to IntelliJ IDEA by:
-* File -> Open... -> pick `pom.xml` file.
+# Java PSK lab number 1
+Project is based on requirements provided by professor. 
+
+ProjectManagment system. Stored Employees, Departments, Projects.
 
 ## Application Server configuration
 
