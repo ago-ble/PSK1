@@ -1,0 +1,52 @@
+package lt.vu.entities;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class Employee {
+    private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue
+    public Long getId() {
+        return id;
+    }
+
+    private String name;
+
+    @Basic
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private Department department;
+
+    @ManyToOne
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    private List<Project> projects;
+
+    @ManyToMany
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+}
