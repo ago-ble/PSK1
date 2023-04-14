@@ -6,6 +6,7 @@
 >
 <h:head/>
 <h:body>
+    #{pirmasKomponentas.sakykLabas()}
     <h2>Teams:</h2>
     <ol>
         <ui:repeat value="#{teams.allTeams}" var="team">
@@ -17,5 +18,19 @@
         <h:commandButton value="Add new team" actionListener="#{teams.createTeam}" action="index?faces-redirect=true"/>
     </h:form>
     <h:link outcome="myBatis/teams" value="MyBatis implementation"/>
+
+
+
+    <h2>Departments:</h2>
+    <ol>
+        <ui:repeat value="#{departments.allDepartments}" var="department">
+            <li><h:link value="#{department.name}" outcome="employees?departmentId=#{department.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{departments.departmentToCreate.name}" required="true" />
+        <h:commandButton value="Add new department" actionListener="#{departments.createDepartment}" action="index?faces-redirect=true"/>
+    </h:form>
+
 </h:body>
 </html>

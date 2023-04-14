@@ -1,41 +1,47 @@
 package lt.vu.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Department.findAll", query = "select t from Department as t")
+})
+@Table(name = "DEPARTMENT")
+@Getter
+@Setter
 public class Department {
-    private Long id;
+    public Department(){
 
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String name;
 
-    @Basic
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    private List<Employee> employees;
-
     @OneToMany(mappedBy = "department")
-    public List<Employee> getEmployees() {
-        return employees;
+    private List<Employee> employees = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department department = (Department) o;
+        return Objects.equals(name, department.name);
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name);
     }
+
 }
