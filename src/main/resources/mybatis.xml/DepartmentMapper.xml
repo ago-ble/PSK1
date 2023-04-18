@@ -17,7 +17,7 @@
       This element was generated on Tue Apr 18 23:39:33 EEST 2023.
     -->
     delete from PUBLIC.DEPARTMENT
-    where ID = #{id,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="lt.vu.mybatis.model.Department" useGeneratedKeys="true">
     <!--
@@ -36,7 +36,7 @@
     -->
     update PUBLIC.DEPARTMENT
     set NAME = #{name,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--
@@ -46,7 +46,7 @@
     -->
     select ID, NAME
     from PUBLIC.DEPARTMENT
-    where ID = #{id,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     <!--

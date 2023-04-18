@@ -8,7 +8,7 @@ public class Department {
      *
      * @mbg.generated Tue Apr 18 23:39:33 EEST 2023
      */
-    private Long id;
+    private Integer id;
 
     /**
      *
@@ -27,7 +27,7 @@ public class Department {
      *
      * @mbg.generated Tue Apr 18 23:39:33 EEST 2023
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -39,7 +39,7 @@ public class Department {
      *
      * @mbg.generated Tue Apr 18 23:39:33 EEST 2023
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

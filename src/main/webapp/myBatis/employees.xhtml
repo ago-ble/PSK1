@@ -11,7 +11,7 @@
     <ol>
         <ui:repeat value="#{employeesInDep.department.employees}" var="employee">
             <li>
-                <h:link value="#{employee.name}" outcome="employeeDetails?employeeId=#{employee.id}" />
+                <p> #{employee.name} </p>
             </li>
         </ui:repeat>
     </ol>
