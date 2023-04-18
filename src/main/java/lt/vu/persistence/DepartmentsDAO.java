@@ -29,4 +29,5 @@ public class DepartmentsDAO {
         return em.find(Department.class, id);
     }
 
+
 }

@@ -5,15 +5,15 @@ import java.util.List;
 
 @Entity
 public class Employee {
-    private Long id;
+    private Integer id;
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Id
     @GeneratedValue
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -49,4 +49,5 @@ public class Employee {
     public void setProjects(List<Project> projects) {
         this.projects = projects;
     }
+
 }

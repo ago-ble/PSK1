@@ -18,11 +18,10 @@
     <h:form>
         <h:inputText a:placeholder="name" value="#{employeesInDep.employeeToCreate.name}" required="true" />
         <h:commandButton value="Add employee to the department"
-                         actionListener="#{employeesInDep.createEmployee}"
-                         action="#{'employees?faces-redirect=true&amp;departmentId='.concat(employeesInDep.department.id)}">
+                         action="#{employeesInDep.createEmployee}">
             <f:param name="departmentId" value="#{employeesInDep.department.id}" />
         </h:commandButton>
     </h:form>
-    <h:link outcome="index" value="Back to departments page"/>
+    <h:link outcome="/myBatis/departments" value="Back to departments page"/>
 </h:body>
 </html>

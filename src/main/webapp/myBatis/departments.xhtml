@@ -8,14 +8,14 @@
 <h:body>
     <h2>Departments:</h2>
     <ol>
-        <ui:repeat value="#{departments.allDepartments}" var="department">
+        <ui:repeat value="#{departmentsMyBaitis.allDepartments}" var="department">
             <li><h:link value="#{department.name}" outcome="employees?departmentId=#{department.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{departments.departmentToCreate.name}" required="true" />
-        <h:commandButton value="Add new department" actionListener="#{departments.createDepartment}" action="index?faces-redirect=true"/>
+        <h:inputText value="#{departmentsMyBaitis.departmentToCreate.name}" required="true" />
+        <h:commandButton value="Add new department" actionListener="#{departmentsMyBaitis.createDepartment}" action="index?faces-redirect=true"/>
     </h:form>
-    <h:link outcome="myBatis/departments" value="MyBatis implementation"/>
+    <h:link value="Back to index" outcome="/index"/>
 </h:body>
 </html>

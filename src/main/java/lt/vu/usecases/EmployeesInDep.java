@@ -42,6 +42,7 @@ public class EmployeesInDep implements Serializable {
     @LoggedInvocation
     public void createEmployee() {
         employeeToCreate.setDepartment(this.department);
+        employeeToCreate.setProjects(null);
         employeesDAO.persist(employeeToCreate);
     }
 
