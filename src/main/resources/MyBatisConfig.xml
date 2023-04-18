@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias type="lt.vu.mybatis.model.Department" alias="Department"/>
         <typeAlias type="lt.vu.mybatis.model.Employee" alias="Employee"/>
+        <typeAlias type="lt.vu.mybatis.model.Project" alias="Project"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -18,5 +19,6 @@
     <mappers>
         <mapper resource="mybatis.xml/DepartmentMapper.xml"/>
         <mapper resource="mybatis.xml/EmployeeMapper.xml"/>
+        <mapper resource="mybatis.xml/ProjectMapper.xml"/>
     </mappers>
 </configuration>
