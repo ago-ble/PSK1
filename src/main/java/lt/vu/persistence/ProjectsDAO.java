@@ -27,6 +27,10 @@ public class ProjectsDAO {
         return em.find(Project.class, id);
     }
 
+    public Project findByName(String name) {
+        return em.find(Project.class, name);
+    }
+
     public Project update(Project project) {
         return em.merge(project);
     }

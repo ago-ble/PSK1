@@ -14,7 +14,7 @@
     </ol>
     <h:form>
         <h:inputText value="#{departmentsMyBatis.departmentToCreate.name}" required="true" />
-        <h:commandButton value="Add new department" actionListener="#{departmentsMyBatis.createDepartment}" action="index?faces-redirect=true"/>
+        <h:commandButton value="Add new department" actionListener="#{departmentsMyBatis.createDepartment}" action="departments?faces-redirect=true"/>
     </h:form>
     <h:link value="Back to index" outcome="/index"/>
 </h:body>

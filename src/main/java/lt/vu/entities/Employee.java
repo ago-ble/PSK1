@@ -2,7 +2,9 @@ package lt.vu.entities;
 
 import javax.persistence.*;
 import java.util.List;
-
+@NamedQueries({
+        @NamedQuery(name = "Employee.findAll", query = "select t from Department as t")
+})
 @Entity
 public class Employee {
     private Integer id;
@@ -40,6 +42,7 @@ public class Employee {
     }
 
     private List<Project> projects;
+
 
     @ManyToMany
     public List<Project> getProjects() {

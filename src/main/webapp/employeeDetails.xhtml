@@ -17,7 +17,7 @@
     </ol>
     <h:form>
         <h:inputText value="#{updateEmployeeDetails.projectToCreate.name}" required="true" />
-        <h:commandButton value="Add project to employee" actionListener="#{updateEmployeeDetails.createProject}"
+        <h:commandButton value="Add project to employee" actionListener="#{updateEmployeeDetails.addProject}"
                          action= "#{'employeeDetails?faces-redirect=true&amp;employeeId='.concat(updateEmployeeDetails.employee.id)}">
             <f:param name="employeeId" value="#{updateEmployeeDetails.employee.id}" />
         </h:commandButton>
