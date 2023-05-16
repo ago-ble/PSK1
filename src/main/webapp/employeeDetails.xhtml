@@ -7,6 +7,21 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head/>
 <h:body>
+    <h2>#{updateEmployeeDetails.employee.name} position #{updateEmployeePosition.employee.position}</h2>
+    <h:form>
+        <h:inputText a:placeholder="enter the position" value="#{updateEmployeePosition.position}" required="true" />
+        <h:commandButton value="update" actionListener="#{updateEmployeePosition.updateEmployeePosition}"
+                         action= "#{'employeeDetails?faces-redirect=true&amp;employeeId='.concat(updateEmployeePosition.employee.id)}">
+            <f:param name="employeeId" value="#{updateEmployeePosition.employee.id}" />
+        </h:commandButton>
+        <h:outputText style="color: red" value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+
+    <h:outputText value="position ID= #{updateEmployeePosition.employee.id}, name= #{updateEmployeePosition.employee.name}" />
+    <br/>
+    <h:outputText value="  update ID= #{updateEmployeeDetails.employee.id}, name= #{updateEmployeeDetails.employee.name}" />
+
+
     <h2>Projects asigned to #{updateEmployeeDetails.employee.name}</h2>
     <ol>
         <ui:repeat value="#{updateEmployeeDetails.employee.projects}" var="project">

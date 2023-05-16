@@ -1,11 +1,15 @@
 package lt.vu.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Employee.findAll", query = "select t from Department as t")
 })
 @Entity
+
 public class Employee {
     private Integer id;
 
@@ -19,16 +23,9 @@ public class Employee {
         return id;
     }
 
+    @Getter
+    @Setter
     private String name;
-
-    @Basic
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     private Department department;
 
@@ -53,4 +50,11 @@ public class Employee {
         this.projects = projects;
     }
 
+    @Getter
+    @Setter
+    private String position;
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }
