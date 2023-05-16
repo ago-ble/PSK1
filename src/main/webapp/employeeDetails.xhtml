@@ -14,13 +14,21 @@
                          action= "#{'employeeDetails?faces-redirect=true&amp;employeeId='.concat(updateEmployeePosition.employee.id)}">
             <f:param name="employeeId" value="#{updateEmployeePosition.employee.id}" />
         </h:commandButton>
-        <h:outputText style="color: red" value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+        <h:outputText style="color: red" value="Value was already modified by other user. If you want to override it - try again"
+                      rendered="#{param['error'] == 'optimistic-lock-exception'}" />
     </h:form>
 
-    <h:outputText value="position ID= #{updateEmployeePosition.employee.id}, name= #{updateEmployeePosition.employee.name}" />
     <br/>
-    <h:outputText value="  update ID= #{updateEmployeeDetails.employee.id}, name= #{updateEmployeeDetails.employee.name}" />
 
+    <h:form>
+        <h:commandButton value="Generate position"
+                         disabled="#{generatePosition.positionGenerationRunning}"
+                         action="#{generatePosition.generateNewPosition()}">
+            <f:param name="employeeId" value="#{updateEmployeePosition.employee.id}"/>
+        </h:commandButton>
+    </h:form>
+    <h:outputText value="#{generatePosition.getPositionGenerationStatus()}"/>
+    <br/><br/>
 
     <h2>Projects asigned to #{updateEmployeeDetails.employee.name}</h2>
     <ol>
