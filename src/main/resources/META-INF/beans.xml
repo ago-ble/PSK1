@@ -9,10 +9,18 @@
 
     <alternatives>
     <!--
-        <class>lt.vu.services.AlternativePositionGenerator</class>
     -->
+        <class>lt.vu.services.AlternativePositionGenerator</class>
+
         <class>lt.vu.services.AlternativeEmploymentStatusGenerator</class>
     </alternatives>
+
+    <!--
+      -->
+    <decorators>
+        <class>lt.vu.services.ManagerPositionGenerator</class>
+    </decorators>
+
 
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>

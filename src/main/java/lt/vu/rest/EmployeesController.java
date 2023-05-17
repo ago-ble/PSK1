@@ -19,7 +19,8 @@ import javax.ws.rs.core.Response;
 public class EmployeesController {
 
     @Inject
-    @Setter    @Getter
+    @Setter
+    @Getter
     private EmployeesDAO employeesDAO;
 
     @Path("/{id}")
