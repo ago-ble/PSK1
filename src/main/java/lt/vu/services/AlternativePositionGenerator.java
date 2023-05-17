@@ -13,7 +13,7 @@ public class AlternativePositionGenerator implements Serializable, IPositionGene
         System.out.println("Using alternative implementation of PositionGenerator");
 
         try {
-            Thread.sleep(2000); // Simulate intensive work
+            Thread.sleep(5000); // Simulate intensive work
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }

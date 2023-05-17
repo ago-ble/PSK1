@@ -9,7 +9,7 @@ public class PositionGenerator implements Serializable, IPositionGenerator {
         System.out.println("Using default implementation of PositionGenerator");
 
         try {
-            Thread.sleep(2000); // Simulate intensive work
+            Thread.sleep(5000); // Simulate intensive work
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }

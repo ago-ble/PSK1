@@ -13,7 +13,9 @@ import lt.vu.services.Production;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -22,6 +24,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Model
+@ViewScoped
+@Named
 public class UpdateEmployeeDetails implements Serializable {
     @Inject
     private ProjectsDAO projectsDAO;
@@ -88,10 +92,26 @@ public class UpdateEmployeeDetails implements Serializable {
         }
         return "employees.xhtml?departmentId=" + this.employee.getDepartment().getId() + "&faces-redirect=true";
     }
-
+    @Transactional
+    @LoggedInvocation
     public String getStatus(){
-        return statusGenerator.generateEmplpoymentStatus();
+        String generatedStatus = statusGenerator.generateEmplpoymentStatus();
+        updateEmployeeStatus(generatedStatus);
+        return generatedStatus;
     }
+    @Transactional
+    @LoggedInvocation
+    public String updateEmployeeStatus(String status) {
+        try{
+            employee.setEmploymentStatus(status);
+            employeesDAO.update(this.employee);
+
+        } catch (OptimisticLockException e) {
+            return "/employeeDetails.xhtml?faces-redirect=true&employeeId=" + this.employee.getId() + "&error=optimistic-lock-exception";
+        }
+        return "employees.xhtml?departmentId=" + this.employee.getDepartment().getId() + "&faces-redirect=true";
+    }
+
 
 
 }
