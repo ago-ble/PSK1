@@ -4,7 +4,6 @@ import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.services.IPositionGenerator;
 
 import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;

@@ -57,4 +57,8 @@ public class Employee {
     @Version
     @Column(name = "OPT_LOCK_VERSION")
     private Integer version;
+
+    @Getter
+    @Setter
+    private String employmentStatus;
 }

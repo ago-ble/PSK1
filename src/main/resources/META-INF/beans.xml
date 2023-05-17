@@ -6,11 +6,14 @@
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
 
+
+    <alternatives>
     <!--
-        <alternatives>
-            <class>lt.vu.services.AlternativePositionGenerator</class>
-        </alternatives>
+        <class>lt.vu.services.AlternativePositionGenerator</class>
     -->
+        <class>lt.vu.services.AlternativeEmploymentStatusGenerator</class>
+    </alternatives>
+
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>
     </interceptors>

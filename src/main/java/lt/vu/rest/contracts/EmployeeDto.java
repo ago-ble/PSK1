@@ -16,4 +16,6 @@ public class EmployeeDto {
     private String DepartmentName;
 
     private String Position;
+
+    private String EmploymentStatus;
 }

@@ -56,6 +56,9 @@ public class EmployeesController {
             if(!employeeData.getPosition().isEmpty()){
                 existingEmployee.setPosition(employeeData.getPosition());
             }
+            if(!employeeData.getEmploymentStatus().isEmpty()){
+                existingEmployee.setEmploymentStatus(employeeData.getEmploymentStatus());
+            }
             employeesDAO.update(existingEmployee);
             return Response.ok().build();
         } catch (OptimisticLockException ole) {

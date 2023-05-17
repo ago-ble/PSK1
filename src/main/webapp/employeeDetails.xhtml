@@ -7,7 +7,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head/>
 <h:body>
-    <h2>#{updateEmployeeDetails.employee.name} position #{updateEmployeePosition.employee.position}</h2>
+    <h2>#{updateEmployeeDetails.employee.name} - #{updateEmployeePosition.employee.position}</h2>
+
+    <h3>Employment status</h3>
+    <h:outputText value="#{updateEmployeeDetails.getStatus()}"/><br/>
+
+    <h3>Change position:</h3>
     <h:form>
         <h:inputText a:placeholder="enter the position" value="#{updateEmployeePosition.position}" required="true" />
         <h:commandButton value="update" actionListener="#{updateEmployeePosition.updateEmployeePosition}"
@@ -28,9 +33,9 @@
         </h:commandButton>
     </h:form>
     <h:outputText value="#{generatePosition.getPositionGenerationStatus()}"/>
-    <br/><br/>
+    <br/>
 
-    <h2>Projects asigned to #{updateEmployeeDetails.employee.name}</h2>
+    <h3>Projects asigned to #{updateEmployeeDetails.employee.name}</h3>
     <ol>
         <ui:repeat value="#{updateEmployeeDetails.employee.projects}" var="project">
             <li>

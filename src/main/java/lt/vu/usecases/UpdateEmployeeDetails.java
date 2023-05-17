@@ -7,7 +7,9 @@ import lt.vu.entities.Project;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.EmployeesDAO;
 import lt.vu.persistence.ProjectsDAO;
-import java.util.*;
+import lt.vu.services.IEmplpoymentStatusGenerator;
+import lt.vu.services.Production;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
@@ -15,7 +17,6 @@ import javax.inject.Inject;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -34,6 +35,10 @@ public class UpdateEmployeeDetails implements Serializable {
 
     @Getter @Setter
     private Project projectToCreate = new Project();
+
+    @Inject
+    @Production
+    private IEmplpoymentStatusGenerator statusGenerator;
 
     @PostConstruct
     public void init() {
@@ -83,5 +88,10 @@ public class UpdateEmployeeDetails implements Serializable {
         }
         return "employees.xhtml?departmentId=" + this.employee.getDepartment().getId() + "&faces-redirect=true";
     }
+
+    public String getStatus(){
+        return statusGenerator.generateEmplpoymentStatus();
+    }
+
 
 }
