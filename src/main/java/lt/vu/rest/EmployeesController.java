@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @ApplicationScoped
-@Path("/employees")
+@Path("/employeeDetails")
 public class EmployeesController {
 
     @Inject
@@ -28,7 +28,6 @@ public class EmployeesController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") final Integer id) {
         Employee employee = employeesDAO.findOne(id);
-        System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
         if (employee == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -47,7 +46,6 @@ public class EmployeesController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Response add(EmployeeDto employeeData) {
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         Employee newEmployee = new Employee();
 
         newEmployee.setName(employeeData.getName());
@@ -69,7 +67,6 @@ public class EmployeesController {
             EmployeeDto employeeData) {
         try {
             Employee existingEmployee = employeesDAO.findOne(employeeId);
-            System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
             if (existingEmployee == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
@@ -81,6 +78,7 @@ public class EmployeesController {
             if(!employeeData.getEmploymentStatus().isEmpty()){
                 existingEmployee.setEmploymentStatus(employeeData.getEmploymentStatus());
             }
+            employeesDAO.update(existingEmployee);
             employeesDAO.update(existingEmployee);
             return Response.ok().build();
         } catch (OptimisticLockException ole) {

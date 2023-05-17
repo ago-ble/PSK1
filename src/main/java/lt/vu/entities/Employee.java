@@ -9,7 +9,6 @@ import java.util.List;
         @NamedQuery(name = "Employee.findAll", query = "select t from Department as t")
 })
 @Entity
-
 public class Employee {
     private Integer id;
 
@@ -54,9 +53,15 @@ public class Employee {
     @Setter
     private String position;
 
+//    @Version
+//    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
     @Version
     @Column(name = "OPT_LOCK_VERSION")
-    private Integer version;
+    private Integer getVersion(){return version;}
+
+    private void setVersion(Integer version){this.version = version;}
+
 
     @Getter
     @Setter

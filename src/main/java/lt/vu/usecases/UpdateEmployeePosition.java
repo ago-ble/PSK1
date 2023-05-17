@@ -20,6 +20,7 @@ import java.util.Map;
 
 @ViewScoped
 @Named
+@Getter @Setter
 public class UpdateEmployeePosition implements Serializable {
     @Inject
     private EmployeesDAO employeesDAO;
@@ -43,9 +44,7 @@ public class UpdateEmployeePosition implements Serializable {
     @LoggedInvocation
     public String updateEmployeePosition() {
         employee.setPosition(position);
-        System.out.println("position1  "+this.employee.getName() + " position sito" + this.employee.getPosition() + " position naujo" + employee.getPosition() );
         try{
-            System.out.println("pateko i try AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             employeesDAO.update(this.employee);
         } catch (OptimisticLockException e) {
             return handleOptimisticLockException();
@@ -58,7 +57,6 @@ public class UpdateEmployeePosition implements Serializable {
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     @LoggedInvocation
     public String handleOptimisticLockException(){
-        System.out.println("EXEPTION");
         this.employee = employeesDAO.findOne(this.employee.getId());
         return "/employeeDetails.xhtml?faces-redirect=true&employeeId=" + employee.getId() + "&error=optimistic-lock-exception";
 
